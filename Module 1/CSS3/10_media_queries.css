@@ -1,0 +1,18 @@
+@media (max-width: 768px) {
+  /* Stack nav links vertically */
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Smaller font size */
+  body {
+    font-size: 16px;
+    margin: 10px;
+  }
+
+  /* Reduce image size */
+  .responsive-img {
+    width: 90vw; /* 90% of viewport width */
+  }
+}

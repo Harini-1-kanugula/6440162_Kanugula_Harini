@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Community Event Portal</title>
+  <style>
+    /* Task 3: Welcome banner styles */
+    #welcomeBanner {
+      background-color: #007bff; /* blue */
+      color: white;
+      padding: 15px;
+      margin-bottom: 20px;
+      font-size: 1.2em;
+      border-radius: 6px;
+    }
+
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+    }
+
+    /* Task 4: Image gallery */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+  td {
+    padding: 10px;
+  }
+  .eventImg {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 2px solid #333;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .eventImg:hover {
+    transform: scale(1.05);
+    border-color: #007BFF;
+  }
+  caption {
+    margin-top: 5px;
+    font-weight: bold;
+  }
+    /* Task 5: Form styling */
+    form {
+      background: #f4f4f4;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      margin-bottom: 30px;
+    }
+
+    input, select, textarea, button {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      font-size: 1em;
+    }
+
+    button {
+      background-color: #28a745;
+      border: none;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    /* Task 6: Enlarged image styling */
+    #enlargedImage {
+      max-width: 100%;
+      display: block;
+      margin: 10px auto;
+      border: 3px solid #007bff;
+      border-radius: 8px;
+    }
+
+    /* Task 7: Video styling */
+    video {
+      max-width: 100%;
+      border-radius: 8px;
+      border: 3px solid #333;
+      margin-bottom: 15px;
+    }
+
+    /* Task 9: Output for geolocation */
+    #locationOutput {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Task 2: Navigation -->
+  <!-- Navigation -->
+  <nav>
+    <a href="#home">Home</a> |
+    <a href="#events">Events</a> |
+    <a href="#contact">Contact</a> |
+    <a href="help.html" target="_blank">Help</a>
+  </nav>
+
+  <!-- Task 1: Main sections with IDs -->
+  <!-- Main -->
+  <main>
+    <section id="home">
+      <!-- Task 3: Welcome Banner -->
+      <div id="welcomeBanner">
+        Welcome back, <span class="highlight">User123</span>! 
+        <span style="color: red; font-weight: bold;">Special offer: 20% off on next event!</span>
+      </div>
+    </section>
+
+    <section id="events">
+      <h2>Community Events Gallery</h2>
+
+      <!-- Task 4: Image gallery -->
+      <table>
+  <tr>
+    <td>
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=150&q=80" 
+           alt="Music Festival" title="Music Festival" class="eventImg" ondblclick="enlargeImage(this)">
+      <caption>Music Festival</caption>
+    </td>
+    <td>
+      <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=150&q=80" 
+           alt="Art Exhibition" title="Art Exhibition" class="eventImg" ondblclick="enlargeImage(this)">
+      <caption>Art Exhibition</caption>
+    </td>
+    <td>
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=150&q=80" 
+           alt="Marathon" title="Marathon" class="eventImg" ondblclick="enlargeImage(this)">
+      <caption>Marathon</caption>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://images.unsplash.com/photo-1556741533-f6acd647d2fb?auto=format&fit=crop&w=150&q=80" 
+           alt="Community Meetup" title="Community Meetup" class="eventImg" ondblclick="enlargeImage(this)">
+      <caption>Community Meetup</caption>
+    </td>
+    <td>
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=150&q=80" 
+           alt="Food Fair" title="Food Fair" class="eventImg" ondblclick="enlargeImage(this)">
+      <caption>Food Fair</caption>
+    </td>
+    <td>
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=150&q=80" 
+           alt="Tech Conference" title="Tech Conference" class="eventImg" ondblclick="enlargeImage(this)">
+      <caption>Tech Conference</caption>
+    </td>
+  </tr>
+</table>
+
+      <img id="enlargedImage" src="" alt="Enlarged Event" style="display:none;" />
+
+      <!-- Task 5: Event Registration Form -->
+      <h2>Register for an Event</h2>
+      <form id="eventForm" onsubmit="handleSubmit(event)">
+        <label>
+          Name:<br />
+          <input type="text" name="name" placeholder="Your full name" required autofocus />
+        </label>
+        <label>
+          Email:<br />
+          <input type="email" name="email" placeholder="your.email@example.com" required />
+        </label>
+        <label>
+          Date:<br />
+          <input type="date" name="date" required />
+        </label>
+        <label>
+          Event Type:<br />
+          <select name="eventType" required onchange="showEventFee(this)">
+            <option value="">-- Select an event --</option>
+            <option value="music">Music Festival</option>
+            <option value="art">Art Exhibition</option>
+            <option value="marathon">Marathon</option>
+            <option value="community">Community Meetup</option>
+          </select>
+        </label>
+        <div id="eventFee"></div>
+        <label>
+          Message:<br />
+          <textarea name="message" placeholder="Any special requests?" onkeydown="countChars(event)" onkeyup="countChars(event)"></textarea>
+          <div>Characters typed: <span id="charCount">0</span></div>
+        </label>
+        <label>
+          Phone Number:<br />
+          <input type="tel" name="phone" placeholder="123-456-7890" onblur="validatePhone(this)" />
+        </label>
+
+        <button type="submit" onclick="showSubmitConfirmation(event)">Submit</button>
+        <output id="confirmationMsg"></output>
+      </form>
+
+      <!-- Task 7: Video Invite -->
+      <h2>Event Promo Video</h2>
+      <video id="promoVideo" controls oncanplay="videoReady()">
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+        Your browser does not support the video tag.
+      </video>
+      <div id="videoStatus"></div>
+
+      <!-- Task 9: Geolocation -->
+      <h2>Find Nearby Events</h2>
+      <button onclick="findLocation()">📍 Find Nearby Events</button>
+      <div id="locationOutput"></div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>Email: community@events.com</p>
+      <p>Phone: +1-800-555-1234</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Community Events Portal</p>
+  </footer>
+
+  <!-- Task 8: User Preferences -->
+  <section>
+    <h2>Save Your Event Preferences</h2>
+    <select id="prefEvent" onchange="savePreference()">
+      <option value="">-- Select Preferred Event --</option>
+      <option value="music">Music Festival</option>
+      <option value="art">Art Exhibition</option>
+      <option value="marathon">Marathon</option>
+      <option value="community">Community Meetup</option>
+    </select>
+    <button onclick="clearPreferences()">Clear Preferences</button>
+    <div id="prefMessage"></div>
+  </section>
+
+  <script>
+    // Task 6: Phone validation on blur
+    function validatePhone(input) {
+      const phonePattern = /^\d{3}-\d{3}-\d{4}$/;
+      if (!phonePattern.test(input.value)) {
+        alert("Please enter a valid phone number in the format 123-456-7890.");
+        input.focus();
+      }
+    }
+
+    // Task 6: Show event fee on dropdown change
+    function showEventFee(select) {
+      const fees = {
+        music: "$50",
+        art: "$40",
+        marathon: "$30",
+        community: "Free"
+      };
+      const feeDiv = document.getElementById("eventFee");
+      feeDiv.textContent = select.value ? "Event Fee: " + fees[select.value] : "";
+    }
+
+    // Task 6: Confirm on

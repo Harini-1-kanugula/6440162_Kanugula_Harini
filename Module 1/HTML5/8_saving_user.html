@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Preferences</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      padding: 30px;
+      text-align: center;
+    }
+
+    select, button {
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+      width: 250px;
+    }
+
+    #message {
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Choose Your Preferred Event</h2>
+
+  <select id="eventType" onchange="savePreference()">
+    <option value="">-- Select Event --</option>
+    <option value="music">Music Festival</option>
+    <option value="art">Art Exhibition</option>
+    <option value="marathon">Marathon</option>
+    <option value="community">Community Meetup</option>
+  </select>
+
+  <div id="message"></div>
+
+  <button onclick="clearPreferences()">Clear Preferences</button>
+
+  <script>
+    const eventSelect = document.getElementById("eventType");
+    const message = document.getElementById("message");
+
+    // Load saved preference on page load
+    window.onload = function () {
+      const savedEvent = localStorage.getItem("preferredEvent");
+      if (savedEvent) {
+        eventSelect.value = savedEvent;
+        message.textContent = `Welcome back! Your preferred event: ${savedEvent}`;
+      }
+
+      // For demo: store session info too
+      sessionStorage.setItem("sessionVisit", "active");
+    };
+
+    // Save preference to localStorage
+    function savePreference() {
+      const selected = eventSelect.value;
+      if (selected) {
+        localStorage.setItem("preferredEvent", selected);
+        message.textContent = `Saved preference: ${selected}`;
+      } else {
+        localStorage.removeItem("preferredEvent");
+        message.textContent = "";
+      }
+    }
+
+    // Clear both storages
+    function clearPreferences() {
+      localStorage.clear();
+      sessionStorage.clear();
+      eventSelect.value = "";
+      message.textContent = "Preferences cleared.";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Debugging Demo</title>
+  <style>
+    /* Simple style you can tweak live */
+    #box {
+      width: 150px;
+      height: 150px;
+      background-color: coral;
+      margin: 50px auto;
+      text-align: center;
+      line-height: 150px;
+      font-weight: bold;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="box" onclick="changeColor()">Click me to change color</div>
+
+  <script>
+    // Log initial message on page load
+    console.log("Page loaded and script running.");
+
+    // Function to change color and log debug info
+    function changeColor() {
+      console.log("changeColor() called");
+      
+      const box = document.getElementById('box');
+      
+      // You can set a breakpoint here to watch variable values live
+      let currentColor = box.style.backgroundColor;
+      console.log("Current color is:", currentColor);
+      
+      if (currentColor === 'coral') {
+        box.style.backgroundColor = 'mediumseagreen';
+      } else {
+        box.style.backgroundColor = 'coral';
+      }
+    }
+  </script>
+
+</body>
+</html>

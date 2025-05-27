@@ -1,0 +1,66 @@
+/* ================================
+   Link Styling with Pseudo-classes
+   ================================ */
+
+/* Normal unvisited link */
+a:link {
+  color: #1a73e8; /* Custom blue */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Visited link */
+a:visited {
+  color: #551a8b; /* Purple-ish */
+}
+
+/* Hovered link */
+a:hover {
+  color: #0c47b7; /* Darker blue */
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Active link (while clicking) */
+a:active {
+  color: #d93025; /* Red-ish */
+}
+
+/* ================================
+   List Styling
+   ================================ */
+
+/* General list styles */
+ul, ol {
+  margin: 0 0 1em 1.5em; /* Bottom margin and left indent */
+  padding: 0;
+}
+
+/* List items spacing */
+li {
+  padding: 6px 0;
+}
+
+/* Nav menu - remove bullets and adjust */
+nav ul {
+  list-style-type: none; /* Remove bullets */
+  list-style-position: inside;
+  padding-left: 0;
+  display: flex; /* Horizontal nav menu */
+  gap: 20px; /* Spacing between items */
+}
+
+/* Nav menu links */
+nav ul li a {
+  color: #333;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+/* Nav menu link hover effect */
+nav ul li a:hover {
+  background-color: #e0e0e0;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Find Nearby Events</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+      background-color: #eef2f3;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #output {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Find Nearby Events</h2>
+  <p>Click the button to share your location and discover events near you!</p>
+
+  <button onclick="findLocation()">📍 Find Nearby Events</button>
+
+  <div id="output"></div>
+
+  <script>
+    function findLocation() {
+      const output = document.getElementById("output");
+
+      if (!navigator.geolocation) {
+        output.textContent = "Geolocation is not supported by your browser.";
+        return;
+      }
+
+      output.textContent = "Locating...";
+
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+
+          output.innerHTML = `
+            ✅ Location found!<br>
+            Latitude: ${latitude.toFixed(6)}<br>
+            Longitude: ${longitude.toFixed(6)}
+          `;
+        },
+        function(error) {
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              output.textContent = "❌ Location access was denied by the user.";
+              break;
+            case error.POSITION_UNAVAILABLE:
+              output.textContent = "❌ Location information is unavailable.";
+              break;
+            case error.TIMEOUT:
+              output.textContent = "❌ The request to get user location timed out.";
+              break;
+            default:
+              output.textContent = "❌ An unknown error occurred.";
+              break;
+          }
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0
+        }
+      );
+    }
+  </script>
+
+</body>
+</html>

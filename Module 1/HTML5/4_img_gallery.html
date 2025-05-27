@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community Events Gallery</title>
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+  td {
+    padding: 10px;
+  }
+  .gallery-img {
+    border: 3px solid #444;
+    border-radius: 8px;
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .gallery-img:hover {
+    transform: scale(1.05);
+    border-color: #007BFF;
+  }
+  div {
+    margin-top: 5px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Image Gallery Table -->
+  <table>
+  <tr>
+    <td>
+      <img src="https://picsum.photos/id/1011/150/100" alt="Music Festival" title="Music Festival 2024" class="gallery-img" />
+      <div>Music Festival</div>
+    </td>
+    <td>
+      <img src="https://picsum.photos/id/1015/150/100" alt="Art Exhibition" title="Art Exhibition 2024" class="gallery-img" />
+      <div>Art Exhibition</div>
+    </td>
+    <td>
+      <img src="https://picsum.photos/id/1025/150/100" alt="Food Fair" title="Annual Food Fair" class="gallery-img" />
+      <div>Food Fair</div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://picsum.photos/id/1033/150/100" alt="Community Clean-up" title="Clean-up Drive" class="gallery-img" />
+      <div>Clean-up Drive</div>
+    </td>
+    <td>
+      <img src="https://picsum.photos/id/1040/150/100" alt="Charity Marathon" title="Charity Marathon 2024" class="gallery-img" />
+      <div>Marathon</div>
+    </td>
+    <td>
+      <img src="https://picsum.photos/id/1050/150/100" alt="Cultural Night" title="Cultural Night Performance" class="gallery-img" />
+      <div>Cultural Night</div>
+    </td>
+  </tr>
+</table>
+
+
+</body>
+</html>
